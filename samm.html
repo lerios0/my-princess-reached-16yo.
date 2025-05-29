@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Princess Reached 16 Years Old?</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #ffe6f0, #ffd1dc);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            padding: 20px;
+            color: #8b005d;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .message {
+            font-size: 1.3em;
+            margin: 20px auto;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+        .photo-placeholder {
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            border-radius: 20px;
+            background-color: #ffebf2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(255, 192, 203, 0.5);
+        }
+        .play-btn {
+            background: #ff6b9d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(255, 107, 157, 0.3);
+            transition: all 0.3s;
+        }
+        .play-btn:hover {
+            background: #ff4785;
+            transform: scale(1.05);
+        }
+        .signature {
+            font-style: italic;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 A Princess Reached 16 Years Old? 🎂</h1>
+    
+    <div class="message">
+        Happy birthday my lil princess! I met u when u were just 13 years old and ur now 16!!<br>
+        Ur getting older and older. I hope I always see u growing and the smile on ur face be always present wherever u go! 💖
+    </div>
+    
+    <div class="photo-placeholder">
+        [Drag princess photo here]
+    </div>
+    
+    <div class="signature">
+        139oba | 100 sna b sha w lahna and u get what u wish for wit good life :3
+    </div>
+    
+    <button class="play-btn" onclick="playSong()">
+        🎵 Play Birthday Song
+    </button>
+    
+    <audio id="birthdaySong">
+        <source src="https://files.catbox.moe/z9x0f9.mp3" type="audio/mpeg">
+        Your browser doesn't support audio element.
+    </audio>
+    
+    <script>
+        function playSong() {
+            const song = document.getElementById('birthdaySong');
+            const btn = document.querySelector('.play-btn');
+            
+            song.play()
+                .then(() => {
+                    btn.innerHTML = '🎶 Music Playing...';
+                    btn.style.background = '#9dff6b';
+                })
+                .catch(e => {
+                    alert('Please allow audio to play!');
+                });
+        }
+        
+        // Try gentle autoplay
+        window.addEventListener('click', function() {
+            document.getElementById('birthdaySong').play()
+                .catch(e => console.log('Waiting for button click'));
+        });
+    </script>
+</body>
+</html>
