@@ -1,105 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Princess Reached 16 Years Old?</title>
+    <title>Happy 16th Birthday Princess!</title>
     <style>
         body {
-            background: linear-gradient(to bottom right, #ffe6f0, #ffd1dc);
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: pink;
             text-align: center;
+            font-family: cursive;
             padding: 20px;
-            color: #8b005d;
         }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        .message {
-            font-size: 1.3em;
-            margin: 20px auto;
-            max-width: 500px;
-            line-height: 1.6;
-        }
-        .photo-placeholder {
-            width: 300px;
-            height: 300px;
-            margin: 20px auto;
-            border-radius: 20px;
-            background-color: #ffebf2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px rgba(255, 192, 203, 0.5);
-        }
-        .play-btn {
-            background: #ff6b9d;
+        #playButton {
+            background: purple;
             color: white;
             border: none;
-            padding: 12px 25px;
-            font-size: 1.2em;
+            padding: 15px 30px;
+            font-size: 20px;
             border-radius: 50px;
             cursor: pointer;
-            margin: 20px 0;
-            box-shadow: 0 4px 8px rgba(255, 107, 157, 0.3);
-            transition: all 0.3s;
-        }
-        .play-btn:hover {
-            background: #ff4785;
-            transform: scale(1.05);
-        }
-        .signature {
-            font-style: italic;
-            margin-top: 30px;
+            margin: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>🎉 A Princess Reached 16 Years Old? 🎂</h1>
-    
-    <div class="message">
-        Happy birthday my lil princess! I met u when u were just 13 years old and ur now 16!!<br>
-        Ur getting older and older. I hope I always see u growing and the smile on ur face be always present wherever u go! 💖
-    </div>
-    
-    <div class="photo-placeholder">
-        [Drag princess photo here]
-    </div>
-    
-    <div class="signature">
-        139oba | 100 sna b sha w lahna and u get what u wish for wit good life :3
-    </div>
-    
-    <button class="play-btn" onclick="playSong()">
-        🎵 Play Birthday Song
-    </button>
-    
-    <audio id="birthdaySong">
+    <h1>🎂 Happy 16th Birthday Princess! 🎉</h1>
+    <p>Your beautiful birthday message here...</p>
+
+    <!-- 3 AUDIO SOURCES FOR MAXIMUM COMPATIBILITY -->
+    <audio id="birthdayAudio">
+        <!-- Primary Source -->
         <source src="https://files.catbox.moe/z9x0f9.mp3" type="audio/mpeg">
-        Your browser doesn't support audio element.
+        <!-- Backup Source 1 -->
+        <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-583.mp3" type="audio/mpeg">
+        <!-- Backup Source 2 -->
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
-    
+
+    <!-- BIG PLAY BUTTON -->
+    <button id="playButton">🎵 CLICK TO PLAY BIRTHDAY SONG</button>
+
     <script>
-        function playSong() {
-            const song = document.getElementById('birthdaySong');
-            const btn = document.querySelector('.play-btn');
-            
-            song.play()
-                .then(() => {
-                    btn.innerHTML = '🎶 Music Playing...';
-                    btn.style.background = '#9dff6b';
-                })
-                .catch(e => {
-                    alert('Please allow audio to play!');
-                });
-        }
-        
-        // Try gentle autoplay
-        window.addEventListener('click', function() {
-            document.getElementById('birthdaySong').play()
-                .catch(e => console.log('Waiting for button click'));
+        const audio = document.getElementById('birthdayAudio');
+        const button = document.getElementById('playButton');
+
+        // 1. Try autoplay when page loads
+        window.onload = function() {
+            audio.play().catch(e => {
+                console.log("Autoplay blocked - waiting for button click");
+            });
+        };
+
+        // 2. Play when button clicked
+        button.addEventListener('click', function() {
+            audio.play();
+            button.textContent = "🎶 MUSIC PLAYING!";
+            button.style.background = "green";
+        });
+
+        // 3. Play when user touches anywhere on screen
+        document.body.addEventListener('click', function() {
+            audio.play().catch(e => {});
         });
     </script>
 </body>
